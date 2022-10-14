@@ -79,7 +79,7 @@ Node *removeDuplicates(Node *head)
              Node* next_next = curr-> next-> next;
              Node* nodeToDelete = curr-> next;
              delete(nodeToDelete);
-             curr->next = curr->next->next;
+             curr->next =next_next;
          }
          else{
              curr = curr-> next;
