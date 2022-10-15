@@ -81,57 +81,29 @@ struct Node {
   }
 };
 */
-
-Node* solve(Node* head1, Node* head2){
-    if(head1 -> next == NULL){
-        head1-> next = head2;
-    return head1;
-    }
-    
-       Node* curr1 = head1;
-       Node* next1 = curr1-> next;
-       Node* curr2 = head2;
-       Node*  next2 = curr2-> next;
-    
-    while(next1 != NULL && curr2 != NULL){
-        if(curr2 -> data >= curr1 -> data && 
-           curr2 -> data <= next1-> data){
-            
-            curr1 -> next = curr2;
-            next2 = curr2-> next;
-            curr2-> next= next1;
-            
-            curr1 = curr2;
-            curr2 = next2;
-        }
-        else{
-            curr1 = next1;
-            next1= next1-> next;
-            if(next1 == NULL){
-                curr1 -> next = curr2;
-                    return head1;
-            }
-        }
-    }
-    return head1;
-}
-
-
 //Function to merge two sorted linked list.
 Node* sortedMerge(Node* head1, Node* head2)  
 {  
-   
     // code here
-    if(head1 == NULL)
-        return head2;
-    
-    if(head2 == NULL)
+    if (head1==NULL) return head2; // if the head 1 is empty then just print head2-> data
+
+    if (head2==NULL) return head1; // if the head 2 is empty then just print head1-> data
+
+    if (head1->data<=head2->data) // checking the data elements in the two lists who value is smaller 
+
+    {
+
+        head1->next=sortedMerge(head1->next, head2); // sorting the data or updating the next value in the head1
+
         return head1;
-    
-    if(head1 -> data <= head2 -> data){
-        solve(head1, head2);
-    }
-    else{
-        solve(head2,head1);
+
+    }else
+
+    {
+
+        head2->next=sortedMerge(head1,head2->next);  // sorting the data or updating the next value in the head 2
+
+        return head2;
+
     }
 }  
