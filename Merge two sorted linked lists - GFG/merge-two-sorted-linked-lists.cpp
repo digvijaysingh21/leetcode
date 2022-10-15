@@ -82,15 +82,15 @@ struct Node {
 };
 */
 
-Node* solve(Node* first, Node* second){
-    if(first -> next == NULL){
-        first-> next = second;
-    return first;
+Node* solve(Node* head1, Node* head2){
+    if(head1 -> next == NULL){
+        head1-> next = head2;
+    return head1;
     }
     
-       Node* curr1 = first;
+       Node* curr1 = head1;
        Node* next1 = curr1-> next;
-       Node* curr2 = second;
+       Node* curr2 = head2;
        Node*  next2 = curr2-> next;
     
     while(next1 != NULL && curr2 != NULL){
@@ -109,30 +109,29 @@ Node* solve(Node* first, Node* second){
             next1= next1-> next;
             if(next1 == NULL){
                 curr1 -> next = curr2;
-                    return first;
+                    return head1;
             }
         }
     }
-    return first;
+    return head1;
 }
 
 
 //Function to merge two sorted linked list.
 Node* sortedMerge(Node* head1, Node* head2)  
 {  
-   Node* first = head1;
-   Node* second = head2;
+   
     // code here
-    if(first == NULL)
-        return second;
+    if(head1 == NULL)
+        return head2;
     
-    if(second == NULL)
-        return first;
+    if(head2 == NULL)
+        return head1;
     
-    if(first -> data <= second -> data){
-        solve(first, second);
+    if(head1 -> data <= head2 -> data){
+        solve(head1, head2);
     }
     else{
-        solve(second,first);
+        solve(head2,head1);
     }
 }  
