@@ -47,20 +47,20 @@ class Solution
         //step3 single element in stack is potential celebrity
         //so verify it
         
-        bool rowCheck = false;
+        
         int zeroCount = 0;
         for(int i=0; i<n; i++){
            if(M[ans][i] == 0)
            zeroCount++;
         }
         //all zeroes
-        if(zeroCount == n){
-            rowCheck = true;
-        }
+        if(zeroCount != n)
+            return -1;
+        
         
         //column check
         
-        bool colCheck = false;
+        
         int oneCount = 0;
         
          for(int i=0; i<n; i++){
@@ -68,16 +68,11 @@ class Solution
            oneCount++;
         }
         //all zeroes
-        if(oneCount == n-1){
-            colCheck = true;
-        }
-        
-        if(rowCheck == true && colCheck == true){
-            return ans;
-        }
-        else{
+        if(oneCount != n-1)
             return -1;
-        }
+        
+        return ans;
+        
     }
 };
 
