@@ -41,7 +41,7 @@ vector<long long> printFirstNegativeInteger(long long int A[],
                dq.push_back(i);
            }
        }
-       //stor answer of first l sized window
+       //stor answer of first k sized window
          if(dq.size() > 0){
              ans.push_back(A[dq.front()]);
          } 
