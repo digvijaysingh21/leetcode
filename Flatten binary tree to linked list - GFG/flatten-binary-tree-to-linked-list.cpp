@@ -113,13 +113,8 @@ class Solution
                     
                 pred->right = curr-> right;
                 curr->right = curr->left;
+                curr-> left = NULL;
             }
-            curr = curr-> right;
-        }
-        //left part null
-        curr = root;
-        while(curr != NULL){
-            curr-> left = NULL;
             curr = curr-> right;
         }
     }
